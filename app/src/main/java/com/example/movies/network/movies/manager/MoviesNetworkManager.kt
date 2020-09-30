@@ -155,6 +155,4 @@ class MoviesNetworkManager(
         imagesCompleteNotifier.hide()
             .subscribeOn(Schedulers.io())
 
-    override fun getImagesData(): Map<Long, Bitmap>?  = imagesData
-
 }

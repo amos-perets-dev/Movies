@@ -21,8 +21,6 @@ class MoviesRepository(
     private val moviesList = arrayListOf<MovieItem>()
     private val mapMovies = HashMap<Long, MovieItem>()
     private val moviesListData = BehaviorSubject.create<ArrayList<MovieItem>>()
-    private var imagesData: Map<Long, Bitmap> = HashMap()
-
 
     private fun addMovies(movies: Array<in MovieDetailsListResponse>) {
         movies.forEach { movieDetailsResponse ->
@@ -69,7 +67,4 @@ class MoviesRepository(
         )
     }
 
-    override fun setLocalImages(localImages: Map<Long, Bitmap>) {
-        imagesData = localImages as HashMap<Long, Bitmap>
-    }
 }

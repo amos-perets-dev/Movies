@@ -13,6 +13,4 @@ interface IMoviesRepository {
 
     fun initData(): Observable<Boolean>?
 
-    fun setLocalImages(localImages: Map<Long, Bitmap>)
-
 }
