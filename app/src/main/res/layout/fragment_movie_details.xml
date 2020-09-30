@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/movie_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_header_details_movie"
+        android:drawableStart="@drawable/ic_close"
+        android:drawableEnd="@drawable/ic_close"
+        android:gravity="center"
+        android:maxLines="2"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/color_black"
+        app:autoSizeMaxTextSize="20dp"
+        app:autoSizeMinTextSize="18dp"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/activity_movies_list_background_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_name_text_view">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rating_text_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_star"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:padding="4dp"
+            android:scaleType="centerInside"
+            android:textColor="@color/color_black"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="14dp"
+            app:autoSizeMinTextSize="12dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/release_year_text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:textStyle="italic"
+            app:autoSizeMaxTextSize="20dp"
+            app:autoSizeMinTextSize="18dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/rating_text_view"
+            app:layout_constraintEnd_toStartOf="@+id/save_fav_list_image_view"
+            app:layout_constraintStart_toEndOf="@+id/rating_text_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/save_fav_list_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintHeight_percent="0.085"
+            app:layout_constraintWidth_percent="0.15"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_to_save"
+            android:elevation="20dp"
+            android:padding="2dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/release_year_text_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/release_year_text_view"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/poster_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:elevation="20dp"
+            android:paddingTop="2dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/description_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rating_text_view"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/background_poster_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingTop="2dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/description_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rating_text_view" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/description_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description_text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="serif"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/color_white"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="13dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/description_top" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

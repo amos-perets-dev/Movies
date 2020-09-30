@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="tmdb_id">680e487c2512658bbc38fbcabe7a0a85</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="activity_movies_list_button_my_list_text">My List</string>
+    <string name="activity_my_movies_list_button_movies_list_text">Movies List</string>
+    <string name="activity_my_movies_list_no_items_msg_text">NO ITEMS</string>
+    <string name="activity_splash_title_text">MoViNfo</string>
+    <string name="network_msg">NO AVAILABLE NETWORK</string>
+    <string name="network_msg_load">START LOAD MOVIES</string>
+
+</resources>

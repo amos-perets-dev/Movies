@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_movies_list_background_color">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/movie_name_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/movie_name_header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/color_white"
+        app:autoSizeMaxTextSize="22dp"
+        app:autoSizeMinTextSize="18dp"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/movie_name_top" />
+
+    <com.example.movies.movie_app.recyler_view.MovieRecyclerView
+        android:id="@+id/movies_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/movie_name_header" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_next_page_text_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_button"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="20dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:textColor="#000000"
+        app:autoSizeMaxTextSize="20dp"
+        app:autoSizeMinTextSize="18dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/msg_text_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="20dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:alpha="1"
+        android:textColor="#FFFFFF"
+        app:autoSizeMaxTextSize="26dp"
+        app:autoSizeMinTextSize="18dp"
+        app:autoSizeTextType="uniform"
+        android:text="@string/activity_my_movies_list_no_items_msg_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_next_page_text_view"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
