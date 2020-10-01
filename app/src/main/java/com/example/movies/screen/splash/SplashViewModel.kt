@@ -5,22 +5,17 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chekersgamepro.util.network.NetworkUtil
+import com.example.movies.utils.network.NetworkUtil
 import com.example.movies.R
 import com.example.movies.movie_app.MovieApplication
-import com.example.movies.network.movies.manager.IMoviesNetworkManager
-import com.example.movies.network.movies.validator.IValidator
 import com.example.movies.repo.images.IImagesRepository
 import com.example.movies.repo.main_movies.IMoviesRepository
-import com.example.movies.repo.images.ImagesRepository
 import com.example.movies.utils.network.NetworkConnectivityHelper
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
 import io.reactivex.functions.Function3
-import io.reactivex.functions.Function4
 import io.reactivex.internal.functions.Functions
-import java.util.*
 
 class SplashViewModel(
     private val moviesRepository: IMoviesRepository,
@@ -72,7 +67,6 @@ class SplashViewModel(
         compositeDisposable.add(
             connectivityHelper
                 .isNetworkAvailable()
-                .startWith(NetworkUtil().isAvailableNetwork())
                 .doOnDispose { connectivityHelper.dispose() }
                 .doOnNext { isNetworkAvailable ->
                     isNetwork.postValue(isNetworkAvailable)
@@ -87,21 +81,14 @@ class SplashViewModel(
 
     fun initData() {
 
-        val initImages = imagesRepository
-            .initImages()
+        compositeDisposable.addAll(
+            imagesRepository
+                .initImages()
+                .subscribe(),
 
-        val initData = moviesRepository
-            .initData()
-
-        val addImages = imagesRepository.addImages()
-
-        compositeDisposable.add(
-            Observable.combineLatest<Boolean, Boolean, Boolean, Boolean>(
-                initData,
-                addImages,
-                initImages,
-                Function3 { t1, t2, t3 -> t1 && t2 && t3 })
-                .subscribe {
+            moviesRepository
+                .initData()
+                ?.subscribe {
                     readyData.postValue(true)
                 }
         )

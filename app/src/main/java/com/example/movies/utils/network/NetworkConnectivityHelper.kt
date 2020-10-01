@@ -1,16 +1,13 @@
 package com.example.movies.utils.network
 
-import android.app.Application
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.net.ConnectivityManager
-import com.example.chekersgamepro.util.network.NetworkUtil
+import android.util.Log
 import com.example.movies.movie_app.MovieApplication
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
-import io.reactivex.disposables.Disposables
 import io.reactivex.subjects.BehaviorSubject
 
 class NetworkConnectivityHelper(private val context: Context) : Disposable {
@@ -24,7 +21,10 @@ class NetworkConnectivityHelper(private val context: Context) : Disposable {
             context: Context,
             intent: Intent
         ) {
-            isNetworkAvailable.onNext(NetworkUtil().isAvailableNetwork())
+            val availableNetwork = NetworkUtil().isAvailableNetwork()
+//            Log.d("TEST_GAME", "NetworkConnectivityHelper availableNetwork: $availableNetwork")
+
+            isNetworkAvailable.onNext(availableNetwork)
         }
     }
 

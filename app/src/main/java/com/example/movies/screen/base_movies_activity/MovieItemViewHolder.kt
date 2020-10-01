@@ -1,10 +1,10 @@
 package com.example.movies.screen.base_movies_activity
 
+import android.util.Log
 import android.view.ViewGroup
 import com.example.movies.R
 import com.example.movies.model.movie.MovieItem
 import com.example.movies.movie_app.recyler_view.MovieRecyclerView
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.movie_item.view.*
 

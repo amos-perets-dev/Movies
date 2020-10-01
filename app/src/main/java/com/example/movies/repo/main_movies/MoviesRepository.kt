@@ -1,13 +1,11 @@
 package com.example.movies.repo.main_movies
 
 import android.graphics.Bitmap
+import android.util.Log
 import com.example.movies.model.movie.MovieDetailsListResponse
 import com.example.movies.model.movie.MovieDetailsResponse
 import com.example.movies.model.movie.MovieItem
 import com.example.movies.network.movies.manager.IMoviesNetworkManager
-import com.example.movies.network.movies.validator.IValidator
-import com.example.movies.repo.images.IImagesRepository
-import com.example.movies.utils.ImageUtil
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import kotlin.collections.ArrayList
@@ -15,7 +13,7 @@ import kotlin.collections.HashMap
 
 class MoviesRepository(
     private val moviesNetworkManager: IMoviesNetworkManager,
-    private val imagesRepository: IImagesRepository
+    private val imagesData: Observable<Map<String, Bitmap>>?
 ) : IMoviesRepository {
 
     private val moviesList = arrayListOf<MovieItem>()
@@ -23,6 +21,7 @@ class MoviesRepository(
     private val moviesListData = BehaviorSubject.create<ArrayList<MovieItem>>()
 
     private fun addMovies(movies: Array<in MovieDetailsListResponse>) {
+
         movies.forEach { movieDetailsResponse ->
             (movieDetailsResponse as MovieDetailsListResponse).moviesList?.let { moviesList ->
 
@@ -60,10 +59,11 @@ class MoviesRepository(
         return MovieItem(
             movieDetailsResponse.movieId,
             movieDetailsResponse.nameTitle.toString(),
-            imagesRepository.getImagesAsync(),
+            imagesData,
             movieDetailsResponse.overview.toString(),
             movieDetailsResponse.rating.toString(),
-            movieDetailsResponse.releaseDate.toString()
+            movieDetailsResponse.releaseDate.toString(),
+            movieDetailsResponse.imagePath
         )
     }
 

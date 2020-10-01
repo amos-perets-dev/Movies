@@ -1,16 +1,10 @@
 package com.example.movies
 
-import com.example.chekersgamepro.util.network.NetworkUtil
 import com.example.movies.model.movie.MovieItem
 import com.example.movies.movie_app.shared.SharedPerf
-import com.example.movies.screen.base_movies_activity.MoviesListAdapter
-import com.example.movies.utils.DateUtil
 import org.junit.Test
 
 import org.junit.Assert.*
-import org.koin.android.ext.android.inject
-import org.koin.java.KoinJavaComponent.inject
-import javax.xml.validation.Validator
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -28,10 +22,6 @@ class ExampleUnitTest {
         assertFalse(validator.isValidSizePage(1))
         assertFalse(validator.isValidSizePage(-1))
         assertTrue(validator.isValidSizePage(100))
-
-        assertTrue( validator.isNeedUpdate(System.currentTimeMillis() - (DateUtil.DAY * 3) ))
-        assertTrue( validator.isNeedUpdate(System.currentTimeMillis() - (DateUtil.DAY * 1) ))
-        assertFalse( validator.isNeedUpdate(System.currentTimeMillis() ))
     }
 
     @Test

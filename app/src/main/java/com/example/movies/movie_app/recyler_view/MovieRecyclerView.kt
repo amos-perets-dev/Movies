@@ -64,9 +64,10 @@ class MovieRecyclerView(context: Context, attributeSet: AttributeSet) :
 
             private lateinit var recyclerView: RecyclerView
 
-            fun updateList(listPlayerEvents: List<Model>) {
-                this.items = ArrayList(listPlayerEvents)
+            fun updateList(data: List<Model>) {
+                this.items = ArrayList(data)
                 notifyDataSetChanged()
+
             }
 
             fun getDataList() : List<Model>{

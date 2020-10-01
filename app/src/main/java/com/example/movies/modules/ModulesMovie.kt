@@ -27,7 +27,9 @@ import com.example.movies.screen.movies_list.MoviesListActivity
 import com.example.movies.screen.movies_list.MoviesListViewModel
 import com.example.movies.screen.splash.SplashViewModel
 import com.example.movies.utils.ImageUtil
+import com.example.movies.repo.images.LoaderImageHelper
 import com.example.movies.utils.network.NetworkConnectivityHelper
+import io.realm.Realm
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -44,16 +46,32 @@ class ModulesMovie {
 
             single<IBaseNetworkManager> { BaseNetworkManager() }
 
+            single<IImagesRepository> {
+                ImagesRepository(
+                    get(),
+                    get(),
+                    get(),
+                    Realm.getDefaultInstance(),
+                    LoaderImageHelper(),
+                    context
+                )
+            }
+
             single<IMoviesNetworkManager> {
                 MoviesNetworkManager(
+                    get(),
                     get(),
                     get()
                 )
             }
 
-            single<IImagesRepository> { ImagesRepository(get(), get(), get(), get()) }
 
-            single<IMoviesRepository> { MoviesRepository(get(), get()) }
+            single<IMoviesRepository> {
+                MoviesRepository(
+                    get(),
+                    get<IImagesRepository>().getImagesAsync()
+                )
+            }
 
             single { MoviesListAdapter() }
 
@@ -116,9 +134,6 @@ class ModulesMovie {
         )
 
     }
-
-
-
 
 
 }
